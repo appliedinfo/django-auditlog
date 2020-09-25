@@ -64,7 +64,7 @@ class LogEntryAdminMixin(object):
         if obj.action == 2:
             return ''  # delete
         changes = json.loads(obj.changes)
-        msg = '<table><tr><th>#</th><th>Field</th><th>From</th><th>To</th></tr>'
+        msg = '<table class="grp-module"><tr><th>#</th><th>Field</th><th>From</th><th>To</th></tr>'
         for i, field in enumerate(sorted(changes), 1):
             value = [i, field] + (['***', '***'] if field == 'password' else changes[field])
             msg += '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>' % tuple(value)
