@@ -10,6 +10,8 @@ try:
 except ImportError:
     from django.core.urlresolvers import NoReverseMatch
 
+from django.utils.safestring import mark_safe
+
 MAX = 75
 
 
@@ -67,6 +69,6 @@ class LogEntryAdminMixin(object):
             value = [i, field] + (['***', '***'] if field == 'password' else changes[field])
             msg += '<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>' % tuple(value)
         msg += '</table>'
-        return msg
+        return mark_safe(msg)
     msg.allow_tags = True
     msg.short_description = 'Changes'
